@@ -89,8 +89,12 @@ def app():
         .input-heading { color: #aebbd7; font-size: .82rem; font-weight: 700; margin: .8rem 0 .28rem; }
         div[data-testid="stForm"] { background: rgba(15, 24, 45, .92); border: 1px solid #263252; border-radius: 20px;
                                     padding: 1.3rem 1.5rem; box-shadow: 0 12px 32px rgba(1, 4, 16, .28); }
-        div[data-testid="stNumberInput"] > div > div, div[data-testid="stSelectbox"] div[data-baseweb="select"] > div {
+        div[data-testid="stNumberInput"] > div > div {
             background: #111b31 !important; border: 1px solid #344363 !important; border-radius: 10px !important; }
+        div[data-testid="stSelectbox"] [data-baseweb="select"],
+        div[data-testid="stSelectbox"] [data-baseweb="select"] > div,
+        div[data-testid="stSelectbox"] [data-baseweb="select"] > div > div {
+            background: transparent !important; border-color: #344363 !important; border-radius: 10px !important; }
         div[data-testid="stNumberInput"] input, div[data-testid="stSelectbox"] div[data-baseweb="select"] * { color: #e7ecfa !important; }
         div[data-testid="stNumberInputContainer"] > div[data-baseweb="input"],
         div[data-testid="stNumberInputContainer"] [data-baseweb="base-input"] {
