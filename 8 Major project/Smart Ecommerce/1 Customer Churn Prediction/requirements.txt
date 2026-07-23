@@ -1,0 +1,7 @@
+# Web application and data handling
+streamlit>=1.37,<2
+pandas>=2.2,<3
+
+# Required to unpickle and run ecommerce_churn_model.pkl.
+# The model was trained with scikit-learn 1.7.2.
+scikit-learn==1.7.2
