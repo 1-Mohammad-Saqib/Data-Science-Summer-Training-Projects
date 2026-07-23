@@ -78,44 +78,48 @@ def app():
     st.set_page_config(page_title="ChurnGuard | Customer Churn Prediction", page_icon="🛒", layout="wide")
     st.markdown("""
         <style>
-        .stApp { background: #f6f8fc; color: #172033; }
+        .stApp { background: radial-gradient(circle at 15% 0%, #171a42 0, #090f20 34%, #060b18 80%); color: #e7ecfa; }
         .block-container { max-width: 1240px; padding-top: 2rem; padding-bottom: 3rem; }
-        .hero { padding: 1.75rem 2rem; border-radius: 22px; color: white;
-                background: linear-gradient(120deg, #0f2747, #166c82); margin-bottom: 1.5rem;
-                box-shadow: 0 14px 35px rgba(15, 39, 71, .18); }
+        .hero { padding: 1.75rem 2rem; border: 1px solid #263252; border-radius: 22px; color: #f4f6ff;
+                background: linear-gradient(120deg, #111a35, #10172a 64%, #171535); margin-bottom: 1.5rem;
+                box-shadow: 0 18px 42px rgba(1, 4, 16, .42); }
         .hero h1 { margin: 0; font-size: 2.2rem; letter-spacing: -.03em; }
         .hero p { margin: .4rem 0 0; opacity: .88; font-size: 1.05rem; }
-        .section-title { color: #173b5d; margin: .4rem 0 1rem; font-size: 1.05rem; font-weight: 750; }
-        .input-heading { color: #34445c; font-size: .82rem; font-weight: 700; margin: .8rem 0 .28rem; }
-        div[data-testid="stForm"] { background: white; border: 1px solid #e2e8f0; border-radius: 20px;
-                                    padding: 1.3rem 1.5rem; box-shadow: 0 8px 28px rgba(15, 23, 42, .05); }
+        .section-title { color: #cdd7f5; margin: .4rem 0 1rem; font-size: 1.05rem; font-weight: 750; }
+        .input-heading { color: #aebbd7; font-size: .82rem; font-weight: 700; margin: .8rem 0 .28rem; }
+        div[data-testid="stForm"] { background: rgba(15, 24, 45, .92); border: 1px solid #263252; border-radius: 20px;
+                                    padding: 1.3rem 1.5rem; box-shadow: 0 12px 32px rgba(1, 4, 16, .28); }
         div[data-testid="stNumberInput"] > div > div, div[data-testid="stSelectbox"] div[data-baseweb="select"] > div {
-            background: #f8fafc !important; border: 1px solid #cbd5e1 !important; border-radius: 10px !important; }
-        div[data-testid="stNumberInput"] input, div[data-testid="stSelectbox"] div[data-baseweb="select"] * { color: #172033 !important; }
+            background: #111b31 !important; border: 1px solid #344363 !important; border-radius: 10px !important; }
+        div[data-testid="stNumberInput"] input, div[data-testid="stSelectbox"] div[data-baseweb="select"] * { color: #e7ecfa !important; }
         div[data-testid="stNumberInputContainer"] > div[data-baseweb="input"],
         div[data-testid="stNumberInputContainer"] [data-baseweb="base-input"] {
-            background: #f8fafc !important; border-color: #cbd5e1 !important; }
-        input[data-testid="stNumberInputField"] { color: #172033 !important; }
+            background: #111b31 !important; border-color: #344363 !important; }
+        input[data-testid="stNumberInputField"] { color: #e7ecfa !important; }
         button[data-testid="stNumberInputStepDown"], button[data-testid="stNumberInputStepUp"] {
-            background: #eef2f7 !important; color: #173b5d !important; }
+            background: #1d2942 !important; color: #cdd7f5 !important; }
         div[data-testid="stRadio"] label, div[data-testid="stRadio"] label *,
         div[role="radiogroup"] label, div[role="radiogroup"] label * {
-            color: #172033 !important; opacity: 1 !important; }
+            color: #dbe3f6 !important; opacity: 1 !important; }
         button[data-baseweb="tab"] { font-size: .93rem; font-weight: 650; padding: .6rem 1rem; }
-        div[data-testid="stTabs"] [data-baseweb="tab-list"] { gap: .6rem; border-bottom: 1px solid #e2e8f0; }
-        div[data-testid="stTabs"] [aria-selected="true"] { color: #0f5d78 !important; border-bottom-color: #0f5d78 !important; }
-        div[data-testid="stTabs"] [aria-selected="false"] { color: #64748b !important; }
-        div[data-testid="stFormSubmitButton"] button { background: #0f5d78 !important; border-color: #0f5d78 !important; border-radius: 10px; }
-        div[data-testid="stMetric"] { background: white; border: 1px solid #e2e8f0; border-radius: 16px; padding: 1rem; }
+        div[data-testid="stTabs"] [data-baseweb="tab-list"] { gap: .6rem; border-bottom: 1px solid #263252; }
+        div[data-testid="stTabs"] [aria-selected="true"] { color: #a995ff !important; border-bottom-color: #7c5cff !important; }
+        div[data-testid="stTabs"] [aria-selected="false"] { color: #91a0bf !important; }
+        div[data-testid="stFormSubmitButton"] button { background: linear-gradient(110deg, #7c5cff, #6042e8) !important; border-color: #8b70ff !important; border-radius: 10px; box-shadow: 0 8px 22px rgba(96, 66, 232, .3); }
+        div[data-testid="stMetric"] { background: #101a2f; border: 1px solid #263252; border-radius: 16px; padding: 1rem; }
         .result-card { padding: 1.25rem 1.4rem; border-radius: 16px; margin-bottom: 1rem; }
-        .risk-high { background: #fff1f2; border: 1px solid #fecdd3; color: #9f1239; }
-        .risk-low { background: #ecfdf5; border: 1px solid #a7f3d0; color: #047857; }
-        .probability-card { background: #173b5d; border-radius: 16px; padding: 1rem 1.25rem;
+        .risk-high { background: #301a33; border: 1px solid #91415c; color: #ffd7e2; }
+        .risk-low { background: #102d30; border: 1px solid #27766d; color: #c5fff2; }
+        .probability-card { background: linear-gradient(135deg, #382b82, #1c2551); border: 1px solid #5e51ae; border-radius: 16px; padding: 1rem 1.25rem;
                             color: #ffffff !important; min-height: 92px; }
-        .probability-card span { display: block; color: #dbeafe !important; font-size: .86rem;
+        .probability-card span { display: block; color: #d9d6ff !important; font-size: .86rem;
                                  font-weight: 600; margin-bottom: .2rem; }
         .probability-card strong { display: block; color: #ffffff !important; font-size: 2.25rem;
                                    font-weight: 800; line-height: 1; letter-spacing: -.04em; }
+        section[data-testid="stSidebar"] { background: #0d162a; border-right: 1px solid #263252; }
+        section[data-testid="stSidebar"] * { color: #dbe3f6; }
+        div[data-testid="stAlert"] { background: #16213b; color: #dbe3f6; border-color: #33466c; }
+        .stMarkdown, .stText, p, label { color: #c2cce2; }
         </style>
     """, unsafe_allow_html=True)
     st.markdown("""
